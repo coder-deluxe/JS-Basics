@@ -10,15 +10,15 @@ var outer = function(){
 //Invoke outer saving the return value into another variable called 'inner'.
 
   //Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
 
   //Code Here
-
+inner();
 
 
 //Next problem
-
 
 
 var callFriend = function(){
@@ -33,8 +33,8 @@ var callFriend = function(){
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
-
-
+var getSentence = callFriend();
+console.log(getSentence("435-215-9248"));
 
 //Next Problem
 
@@ -45,6 +45,17 @@ var callFriend = function(){
 */
 
   //Code Here
+function makeCounter {
+    var count = 0;
+
+    function counter() {
+        count = count + 1;
+        return count;
+    }
+    return counter;
+}
+
+
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -61,17 +72,33 @@ var callFriend = function(){
   Write a function that accepts another function as it's first argument and returns a new function
   (which invokes the original function that was passed in) that can only ever be executed once.
 */
+/* NEED HELP on this !! */
 
   //Code Here
+function2 {
+    return 'I am function2';
+}
 
+function function1(function2) {
+    console.log("I am in function1");
 
+    return function() {
+        function2.apply(null, arguments);
+    };
+
+}
+var newFunc = function1();
+newfunc();
 
 //Next Problem
 
 
 
 /*
-  Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter will be an anonymous function and the second parameter, 'N', will be a number. Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been invoked 'N' number of times, return 'STOP'.
+  Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters.
+  The first parameter will be an anonymous function and the second parameter, 'N', will be a number.
+  Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times.
+  After it's been invoked 'N' number of times, return 'STOP'.
 */
 
 
