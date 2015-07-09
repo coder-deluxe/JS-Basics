@@ -44,24 +44,24 @@ console.log(getSentence("435-215-9248"));
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
-function makeCounter {
-    var count = 0;
+/* NEED HELP */
 
-    function counter() {
-        count = count + 1;
-        return count;
-    }
-    return counter;
+  //Code Here
+var counter = 0;
+
+function makeCounter() {
+    counter = counter + 1;
+    console.log(counter);
 }
 
+var count = function() {
+    makeCounter();
+}
 
-  var count = makeCounter();
-  count() // 1
-  count() // 2
-  count() // 3
-  count() // 4
-
+count() // 1
+count() // 2
+count() // 3
+count() // 4
 
 
 //Next Problem
@@ -72,23 +72,19 @@ function makeCounter {
   Write a function that accepts another function as it's first argument and returns a new function
   (which invokes the original function that was passed in) that can only ever be executed once.
 */
-/* NEED HELP on this !! */
 
   //Code Here
-function2 {
-    return 'I am function2';
-}
 
-function function1(function2) {
-    console.log("I am in function1");
+var myFunction = function(pFunction) {
+    return function newFunc() {
+        return pFunction();
+    }
+};
 
-    return function() {
-        function2.apply(null, arguments);
-    };
-
-}
-var newFunc = function1();
-newfunc();
+console.log(myFunction(function() {
+        return 'Only executed once';
+    }
+)());
 
 //Next Problem
 
@@ -97,17 +93,28 @@ newfunc();
 /*
   Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters.
   The first parameter will be an anonymous function and the second parameter, 'N', will be a number.
-  Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times.
+  Now, in 'fnCounter', allow the anonymous function to be invoked 'N' number of times.
   After it's been invoked 'N' number of times, return 'STOP'.
 */
 
+function fnCounter(pFunction, N) {
+    var num1 = N;
 
+    for(var i = 0; i <= num1; i++) {
+        console.log(pFunction());
+    }
+    return "STOP";
+}
+
+var result = fnCounter(function(){return "I am the anonymous function";}, 5);
+
+console.log(result);
 
 //Next Problem
 
 
 
-/*
+
   var counter = function(){
     for (var i=1; i<=5; i++) {
       setTimeout( function timer(){
@@ -116,9 +123,14 @@ newfunc();
     }
   };
 
-  Above you have a function named counter. Examine the function (without running the code) then below write what you expect to happen when the funciton is invoked. *Hint: setTimeout calls a function or evaluates an expression after a specified number of milliseconds.
+  Above you have a function named counter. Examine the function (without running the code) then below write what you
+   expect to happen when the function is invoked. *Hint: setTimeout calls a function or evaluates an expression
+    after a specified number of milliseconds.
 
     //Answer Here
+    When the function "counter" is invoked, I believe that after 1 second of time a console.log statement will print
+     1 on the console, then after 2 seconds console.log will print 2 on the console, then after 3 seconds the same
+      will occur with 3 printed on the console, and again and again with 4 and 5.
 
 
   Now, run the function in your console and note what happpens.
@@ -126,17 +138,30 @@ newfunc();
   Was your answer right or wrong?
 
     //Answer Here
+    I was wrong, it printed 5 "6" characters , one on each line, the first one starting after 2 seconds, and thereafter
+    immediately after the prior one.
 
 
   Fix the counter function so that it works the way you expect it to work. (logging 1 then 2 then 3, etc)
 */
 
     //Code Here
+for (var i = 1; i <= 5; i++) {
 
+    (function(index) {
+        setTimeout(function() {
+            console.log(index)
+        }, index*1000);
+    })(i);
+}
 
 
 //Next Problem
+var funcArray = [0, 1, 2, 3, 4, 5];
 
+for (i in funcArray; i <= funcArray.length; i++) {
+    console.log(funcArray[i]);
+})
 
 
 /*
@@ -152,4 +177,9 @@ newfunc();
   *Hint: Don't let this fool you. Break down what's really happening here.
 */
 
+var funcArray = [0, 1, 2, 3, 4, 5];
+
+for (var i = 0; i <= funcArray.length; i++) {
+    console.log(funcArray[i]);
+}
 

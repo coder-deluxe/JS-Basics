@@ -29,8 +29,8 @@ function getName() {
     var aName = prompt("What is your name ?");
     return aName;
 }
-  getName();
-
+  var gName = getName();
+  console.log(gName);
 
 //Next Problem
 
